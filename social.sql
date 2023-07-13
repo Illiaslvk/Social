@@ -13,8 +13,6 @@ DROP TABLE UserInterests;
 DROP TABLE Interests;
 DROP TABLE "User";
 
--- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2023-03-24 13:01:09.686
 ALTER SESSION SET NLS_DATE_FORMAT = 'YYYY-MM-DD';
 -- tables
 -- Table: Admin
@@ -331,28 +329,28 @@ JOIN "User" ON Publication.IdUser = "User".IdUser
 JOIN ListOfBlockedUser ON Publication.IdUser = ListOfBlockedUser.IdUser
 WHERE ListOfBlockedUser.IdBlockedUser = 1;
 
---2 SELECT statements with aggregate functions (2 point)
+--2 SELECT statements with aggregate functions 
 
---1 This query returns the average rating of comments for each publication:
+--1 
 SELECT IdPublication, AVG(Rating) as AvgRating
 FROM "Comment"
 GROUP BY IdPublication;
---2 returns total number of users who have each interest:
+--2 
 SELECT i.Title, COUNT(*) as NumUsers
 FROM Interests i
 JOIN UserInterests ui ON i.IdInterests = ui.IdInterests
 GROUP BY i.Title;
 
---2 SELECT statements with subquery (4 points)
+--2 SELECT statements with subquery
 
---1 returns the count of publications made user and FN,LN
+--1 
 SELECT
     "User".FirstName,
     "User".LastName,
     (SELECT COUNT(*) FROM Publication WHERE Publication.IdUser = "User".IdUser) AS PublicationCount
 FROM
     "User";
---2 returns AVGrating of comments made by user and their FN,LN
+--2 
 SELECT
     "User".FirstName,
     "User".LastName,
@@ -360,8 +358,7 @@ SELECT
 FROM
     "User";
 
--- 1 SELECT statement with correlated subquery (3 points)
--- retrievs adminFN, adminLN; where -> checks if there exists any group created by admin  if not we add him to the result
+-- 1 SELECT statement with correlated subquery
 SELECT a.FirstName, a.LastName, a.DateOfEmployment
 FROM Admin a
 WHERE NOT EXISTS (
@@ -372,7 +369,7 @@ WHERE NOT EXISTS (
 
 --DML Instructions:
 
--- 1 UPDATE with correlated subquery (3 points
+-- 1 UPDATE with correlated subquery
 select*from GroupMember;
 
 UPDATE GroupMember
@@ -385,9 +382,8 @@ WHERE IdUser IN (
         FROM "Group"
     )
 );
--- WHERE select all users who are not creators
 
--- 1 DELETE with subquery (2 points)
+-- 1 DELETE with subquery 
 DELETE FROM "Comment"
 WHERE IdUser IN (
     SELECT IdUser FROM "User"
