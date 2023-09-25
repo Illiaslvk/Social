@@ -14,5 +14,6 @@ Another important feature of this project is the ability for users to create gro
 
 Users can also report other participants for violating site rules. These complaints are reviewed by Admins, who make a decision and it stores in the database.
 
-![social](https://github.com/Illiaslvk/Social/assets/101345368/1fb12493-d827-411b-9357-4889da25213b)
+![Social](https://github.com/Illiaslvk/Social/assets/101345368/045dc27f-1709-4cf2-ba65-467f4daae59a)
+
 
